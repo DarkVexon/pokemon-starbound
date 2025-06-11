@@ -1,0 +1,17 @@
+mapscripts Route2_Sunfade_Trail_MapScripts {
+
+}
+
+script SunfadeTrail_EventScript_RouteSign {
+    msgbox("Sunfade Trail", type=MSGBOX_SIGN)
+}
+
+script SunfadeTrail_EventScript_BugCatcher_Simeon {
+    trainerbattle_single(TRAINER_SIMEON, "Passing through?\nNot without meeting my Bug\lPokémon you aren't!", "You were supposed to meet them,\nnot beat them...")
+    msgbox(format("Bug Pokémon are my favorite... when they're not nibbling on me!"), type=MSGBOX_NPC)
+}
+
+script SunfadeTrail_EventScript_Boy_Tim {
+    trainerbattle_single(TRAINER_TIM, "I'm training to get through\nWhispering Grove.\lWant to train with me?", "Wow! Amazing Pokémon!")
+    msgbox(format("Whispering Grove has lots of Poison-type Pokémon... I keep getting overwhelmed!"), type=MSGBOX_NPC)
+}
