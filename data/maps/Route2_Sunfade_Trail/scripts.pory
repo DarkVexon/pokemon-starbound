@@ -3,7 +3,8 @@ mapscripts Route2_Sunfade_Trail_MapScripts {
 }
 
 script SunfadeTrail_EventScript_RouteSign {
-    msgbox("Sunfade Trail", type=MSGBOX_SIGN)
+    msgbox(format("Sunfade Trail\n"
+        "“A gentle path where day quietly gives way to dusk”"), type=MSGBOX_SIGN)
 }
 
 script SunfadeTrail_EventScript_BugCatcher_Simeon {
@@ -14,4 +15,14 @@ script SunfadeTrail_EventScript_BugCatcher_Simeon {
 script SunfadeTrail_EventScript_Boy_Tim {
     trainerbattle_single(TRAINER_TIM, "I'm training to get through\nWhispering Grove.\lWant to train with me?", "Wow! Amazing Pokémon!")
     msgbox(format("Whispering Grove has lots of Poison-type Pokémon... I keep getting overwhelmed!"), type=MSGBOX_NPC)
+}
+
+script SunfadeTrail_EventScript_BugCatcher_Simeon {
+    trainerbattle_single(TRAINER_SIMEON, SunfadeTrail_BugCatcher_Simeon_Intro_Text, SunfadeTrail_BugCatcher_Simeon_Lose_Text)
+    msgbox(SunfadeTrail_BugCatcher_Simeon_Dialogue, type=MSGBOX_NPC)
+}
+
+script SunfadeTrail_EventScript_Boy_Tim {
+    trainerbattle_single(TRAINER_TIM, SunfadeTrail_Boy_Tim_Intro_Text, SunfadeTrail_Boy_Tim_Lose_Text)
+    msgbox(SunfadeTrail_Boy_Tim_Dialogue, type=MSGBOX_NPC)
 }

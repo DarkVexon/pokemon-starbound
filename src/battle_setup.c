@@ -1008,19 +1008,29 @@ void TrainerBattleLoadArgsSecondTrainer(const u8 *data)
 
 void SetMapVarsToTrainerA(void)
 {
+    u32 trainerId = SanitizeTrainerId(TRAINER_BATTLE_PARAM.opponentA);
     if (TRAINER_BATTLE_PARAM.objEventLocalIdA != 0)
     {
         gSpecialVar_LastTalked = TRAINER_BATTLE_PARAM.objEventLocalIdA;
         gSelectedObjectEvent = GetObjectEventIdByLocalIdAndMap(TRAINER_BATTLE_PARAM.objEventLocalIdA, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup);
     }
+    if (TRAINER_BATTLE_PARAM.opponentA != 0)
+    {
+        gSpeakerName = GetTrainerNameFromId(trainerId);
+    }
 }
 
 void SetMapVarsToTrainerB(void)
 {
+    u32 trainerId = SanitizeTrainerId(TRAINER_BATTLE_PARAM.opponentA);
     if (TRAINER_BATTLE_PARAM.objEventLocalIdB != LOCALID_NONE)
     {
         gSpecialVar_LastTalked = TRAINER_BATTLE_PARAM.objEventLocalIdB;
         gSelectedObjectEvent = GetObjectEventIdByLocalIdAndMap(TRAINER_BATTLE_PARAM.objEventLocalIdB, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup);
+    }
+    if (TRAINER_BATTLE_PARAM.opponentA != 0)
+    {
+        gSpeakerName = GetTrainerNameFromId(trainerId);
     }
 }
 
@@ -1491,10 +1501,16 @@ static const u8 *ReturnEmptyStringIfNull(const u8 *string)
 
 static const u8 *GetIntroSpeechOfApproachingTrainer(void)
 {
-    if (gApproachingTrainerId == 0)
+    u32 trainerIdA = SanitizeTrainerId(TRAINER_BATTLE_PARAM.opponentA);
+    u32 trainerIdB = SanitizeTrainerId(TRAINER_BATTLE_PARAM.opponentB);
+    if (gApproachingTrainerId == 0) {
+        gSpeakerName = GetTrainerNameFromId(trainerIdA);
         return ReturnEmptyStringIfNull(TRAINER_BATTLE_PARAM.introTextA);
-    else
+    }
+    else {
+        gSpeakerName = GetTrainerNameFromId(trainerIdB);
         return ReturnEmptyStringIfNull(TRAINER_BATTLE_PARAM.introTextB);
+    }
 }
 
 const u8 *GetTrainerALoseText(void)

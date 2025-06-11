@@ -9,6 +9,7 @@ EWRAM_DATA u8 gStringVar2[0x100] = {0};
 EWRAM_DATA u8 gStringVar3[0x100] = {0};
 EWRAM_DATA u8 gStringVar4[0x3E8] = {0};
 EWRAM_DATA static u8 sUnknownStringVar[16] = {0};
+EWRAM_DATA u8 gNamePlateBuffer[0x20] = {0};
 
 static const u8 sDigits[] = __("0123456789ABCDEF");
 
@@ -479,9 +480,9 @@ static const u8 *ExpandPlaceholder_KunChan(void)
 static const u8 *ExpandPlaceholder_RivalName(void)
 {
     if (gSaveBlock2Ptr->playerGender == MALE)
-        return gText_ExpandedPlaceholder_May;
+        return gText_ExpandedPlaceholder_Selene;
     else
-        return gText_ExpandedPlaceholder_Brendan;
+        return gText_ExpandedPlaceholder_Cassian;
 }
 
 static const u8 *ExpandPlaceholder_Version(void)
